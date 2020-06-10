@@ -1,0 +1,63 @@
+version: '3.1'
+services:
+
+  jeb_fast_api:
+    image: jeb_fast_api:latest
+    container_name: jeb_fast_api
+    restart: always
+    expose:
+      - 80
+    ports:
+      - 8081:80
+    environment:
+      TZ: Asia/Shanghai
+      # domain
+      DOMAIN_HOST: https://m.okeuu.com
+      # Mysql
+      MYSQL_HOST: jeb_mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: user
+      MYSQL_PASSWORD: Ewqdsacxz321
+      MYSQL_DB: jeb_project
+      # Redis
+      REDIS_HOST: jeb_redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: Ewqdsacxz321
+      # SMS
+      SMS_USER: 336300
+      SMS_PASSWORD: Ucall_200326
+    volumes:
+      - ./volumes/app/logs:/app/log
+
+  jeb_mysql:
+    image: mysql:5.7
+    container_name: jeb_mysql
+    restart: always
+    ports:
+      - 12140:3306
+      - 3309:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: flzx3qc!
+      MYSQL_DATABASE: jeb_project
+      MYSQL_USER: user
+      MYSQL_PASSWORD: Ewqdsacxz321
+      TZ: Asia/Shanghai
+    cojeband: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+
+  jeb_redis:
+    image: redis:alpine
+    container_name: jeb_redis
+    restart: always
+    ports:
+      - 12141:6379
+      - 6379:6379
+    cojeband: ["redis-server","--bind","0.0.0.0","--appendonly","yes","--requirepass","Ewqdsacxz321"]
+    volumes:
+      - ./volumes/redis:/data
+
+networks:
+  default:
+    external:
+      name: gateway
