@@ -11,7 +11,7 @@ from os.path import join
 
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import Response, HTMLResponse, RedirectResponse
 from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
@@ -68,6 +68,14 @@ async def add_process_time_header(request: Request, call_next):
 @app.get("/")
 async def read_root():
     return RedirectResponse(DOMAIN + '/h5#/', status_code=302)
+
+
+# 返回图标
+@app.get("/favicon.ico")
+async def favicon():
+    with open(join(PROJECT_STATIC_PATH, "img", "favicon.ico"), mode="rb") as f:
+        content = f.read()
+        return Response(content=content, status_code=200)
 
 
 # H5前端页面路由
