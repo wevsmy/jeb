@@ -5,7 +5,7 @@
 		<view class="header">
 			<view class="top">
 				<view class="avatar">
-					<u-avatar :src="src" mode="square"></u-avatar>
+					<u-avatar src="" mode="square"></u-avatar>
 				</view>
 				<view class="name">
 					willson.wu
@@ -39,23 +39,54 @@
 					</view>
 
 					<view class="btn">
-						<u-button>开启保障</u-button>
+						<u-button type="warning" shape="circle" size="mini">开启保障</u-button>
 					</view>
 
 				</view>
-				
+
 				<view class="item">
 					<view class="title">
 						<view class="line"></view>
 						<view class="text">
-							医疗险
+							重疾险
 						</view>
 						<view class="line"></view>
 					</view>
-				
+
 					<view class="money">
 						<view class="num">
-							600
+							500
+						</view>
+						<view class="unit">
+							元
+						</view>
+						<view class="icon">
+							未保障
+						</view>
+					</view>
+
+					<view class="desc">
+						赠送健康保障金
+					</view>
+
+					<view class="btn">
+						<u-button type="warning" shape="circle" size="mini">领取保障</u-button>
+					</view>
+
+				</view>
+
+				<view class="item">
+					<view class="title">
+						<view class="line"></view>
+						<view class="text">
+							意外险
+						</view>
+						<view class="line"></view>
+					</view>
+
+					<view class="money">
+						<view class="num">
+							40
 						</view>
 						<view class="unit">
 							万
@@ -64,54 +95,46 @@
 							未保障
 						</view>
 					</view>
-				
+
 					<view class="desc">
-						医保100%报销
+						赠送出行意外险
 					</view>
-				
+
 					<view class="btn">
-				
+						<u-button type="warning" shape="circle" size="mini">领取保障</u-button>
 					</view>
-				
+
 				</view>
-				
-				<view class="item">
-					<view class="title">
-						<view class="line"></view>
-						<view class="text">
-							医疗险
-						</view>
-						<view class="line"></view>
-					</view>
-				
-					<view class="money">
-						<view class="num">
-							600
-						</view>
-						<view class="unit">
-							万
-						</view>
-						<view class="icon">
-							未保障
-						</view>
-					</view>
-				
-					<view class="desc">
-						医保100%报销
-					</view>
-				
-					<view class="btn">
-				
-					</view>
-				
-				</view>
-				
+
 			</view>
 
 		</view>
+		<view class="banner">
+			<u-swiper :list="bannerList" img-mode="aspectFit" border-radius="30" height="160"></u-swiper>
+		</view>
 
 
-		<view>嘉E保商城</view>
+		<view class="about">
+			<view class="title">
+				<u-section title="关于我们" :show-line="false" sub-color="#126ef8" font-size="40"></u-section>
+			</view>
+			<view class="info">
+				<image class="img" src="../../static/img/us1_new.png"></image>
+				<image class="img" src="../../static/img/us2_new.png"></image>
+				<image class="img" src="../../static/img/us3_new.png"></image>
+
+			</view>
+
+		</view>
+		<view class="footer">
+			<image class="img" src="../../static/img/logo_no_slogan.jpg" mode="aspectFit"></image>
+			<view class="customer">
+				<view class="icon">
+					<u-icon name="kefu-ermai" color="#2979ff" size="36"></u-icon>
+				</view>
+				<view class="text">联系客服</view>
+			</view>
+		</view>
 
 	</view>
 </template>
@@ -120,6 +143,19 @@
 	export default {
 		data() {
 			return {
+				bannerList: [{
+						image: '../../static/img/ketang.jpg',
+						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
+					},
+					{
+						image: '../../static/img/bxgw.jpg',
+						title: '溯洄从之，道阻且长。溯游从之，宛在水中央'
+					},
+					{
+						image: '../../static/img/banner20618.jpg',
+						title: '蒹葭萋萋，白露未晞。所谓伊人，在水之湄'
+					}
+				]
 
 			}
 		},
@@ -269,21 +305,65 @@
 					}
 
 					.btn {
-						width: 2rem;
-						line-height: .666667rem;
-						font-size: 12PX;
-						display: block;
-						margin: .533333rem auto 0;
-						border-radius: .333333rem;
-						color: #fff;
-						border: 1px solid #ff6e11;
-						background: #ff6e11;
+						margin: 50rpx 40rpx;
 					}
 
 				}
 			}
 		}
 
+		.banner {
+			margin-top: 40rpx;
+			margin-left: 40rpx;
+			margin-right: 40rpx;
+		}
 
+
+		.about {
+			margin-left: 40rpx;
+			margin-right: 40rpx;
+
+			.title {
+				margin-top: 50rpx;
+			}
+
+			.info {
+				display: flex;
+				margin: 40rpx auto;
+				justify-content: space-between;
+
+				.img {
+					width: 176rpx;
+					height: 176rpx;
+				}
+			}
+		}
+
+		.footer {
+
+			display: flex;
+			flex-direction: column;
+			justify-items: center;
+			align-items: center;
+			margin-top: 60rpx;
+			padding-bottom: 40rpx;
+
+			.img {
+				width: 300rpx;
+				height: 63rpx;
+			}
+
+			.customer {
+				display: flex;
+				align-items: center;
+				margin: 40rpx auto;
+				color: #1e91f4;
+
+				.icon {
+					margin-right: 10rpx;
+				}
+			}
+
+		}
 	}
 </style>
