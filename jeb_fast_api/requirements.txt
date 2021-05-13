@@ -10,7 +10,7 @@ idna==2.9
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
-pydantic==1.5.1
+pydantic==1.6.2
 PyMySQL==0.9.3
 redis==3.5.3
 requests==2.23.0
